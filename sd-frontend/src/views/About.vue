@@ -1,0 +1,27 @@
+<template>
+  <div class="container is-fluid">
+    <!-- Please donot remove this Page, it helps the author of this library for continuous development! Thanks. -->
+    <div class="columns is-centered">
+      <div class="column is-3 has-text-centered">
+        <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcKICAgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIgogICB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIgogICB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiCiAgIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM6c29kaXBvZGk9Imh0dHA6Ly9zb2RpcG9kaS5zb3VyY2Vmb3JnZS5uZXQvRFREL3NvZGlwb2RpLTAuZHRkIgogICB4bWxuczppbmtzY2FwZT0iaHR0cDovL3d3dy5pbmtzY2FwZS5vcmcvbmFtZXNwYWNlcy9pbmtzY2FwZSIKICAgdmlld0JveD0iMCAtMjU2IDE5NTAgMTk1MCIKICAgaWQ9InN2ZzMwMDEiCiAgIHZlcnNpb249IjEuMSIKICAgaW5rc2NhcGU6dmVyc2lvbj0iMC40OC4zLjEgcjk4ODYiCiAgIHdpZHRoPSIxMDAlIgogICBoZWlnaHQ9IjEwMCUiCiAgIHNvZGlwb2RpOmRvY25hbWU9ImZvbGRlcl9vcGVuX2FsdF9mb250X2F3ZXNvbWUuc3ZnIj4KICA8bWV0YWRhdGEKICAgICBpZD0ibWV0YWRhdGEzMDExIj4KICAgIDxyZGY6UkRGPgogICAgICA8Y2M6V29yawogICAgICAgICByZGY6YWJvdXQ9IiI+CiAgICAgICAgPGRjOmZvcm1hdD5pbWFnZS9zdmcreG1sPC9kYzpmb3JtYXQ+CiAgICAgICAgPGRjOnR5cGUKICAgICAgICAgICByZGY6cmVzb3VyY2U9Imh0dHA6Ly9wdXJsLm9yZy9kYy9kY21pdHlwZS9TdGlsbEltYWdlIiAvPgogICAgICA8L2NjOldvcms+CiAgICA8L3JkZjpSREY+CiAgPC9tZXRhZGF0YT4KICA8ZGVmcwogICAgIGlkPSJkZWZzMzAwOSIgLz4KICA8c29kaXBvZGk6bmFtZWR2aWV3CiAgICAgcGFnZWNvbG9yPSIjZmZmZmZmIgogICAgIGJvcmRlcmNvbG9yPSIjNjY2NjY2IgogICAgIGJvcmRlcm9wYWNpdHk9IjEiCiAgICAgb2JqZWN0dG9sZXJhbmNlPSIxMCIKICAgICBncmlkdG9sZXJhbmNlPSIxMCIKICAgICBndWlkZXRvbGVyYW5jZT0iMTAiCiAgICAgaW5rc2NhcGU6cGFnZW9wYWNpdHk9IjAiCiAgICAgaW5rc2NhcGU6cGFnZXNoYWRvdz0iMiIKICAgICBpbmtzY2FwZTp3aW5kb3ctd2lkdGg9IjY0MCIKICAgICBpbmtzY2FwZTp3aW5kb3ctaGVpZ2h0PSI0ODAiCiAgICAgaWQ9Im5hbWVkdmlldzMwMDciCiAgICAgc2hvd2dyaWQ9ImZhbHNlIgogICAgIGlua3NjYXBlOnpvb209IjAuMTMxNjk2NDMiCiAgICAgaW5rc2NhcGU6Y3g9Ijk1NC41IgogICAgIGlua3NjYXBlOmN5PSI4OTYiCiAgICAgaW5rc2NhcGU6d2luZG93LXg9IjAiCiAgICAgaW5rc2NhcGU6d2luZG93LXk9IjI1IgogICAgIGlua3NjYXBlOndpbmRvdy1tYXhpbWl6ZWQ9IjAiCiAgICAgaW5rc2NhcGU6Y3VycmVudC1sYXllcj0ic3ZnMzAwMSIgLz4KICA8ZwogICAgIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLC0xLDMwLjM3Mjg4MSwxNDQzLjQyMzcpIgogICAgIGlkPSJnMzAwMyI+CiAgICA8cGF0aAogICAgICAgZD0ibSAxNzgxLDYwNSBxIDAsMzUgLTUzLDM1IEggNjQwIFEgNjAwLDY0MCA1NTQuNSw2MTguNSA1MDksNTk3IDQ4Myw1NjYgTCAxODksMjAzIHEgLTE4LC0yNCAtMTgsLTQwIDAsLTM1IDUzLC0zNSBoIDEwODggcSA0MCwwIDg2LDIyIDQ2LDIyIDcxLDUzIGwgMjk0LDM2MyBxIDE4LDIyIDE4LDM5IHogTSA2NDAsNzY4IGggNzY4IHYgMTYwIHEgMCw0MCAtMjgsNjggLTI4LDI4IC02OCwyOCBIIDczNiBxIC00MCwwIC02OCwyOCAtMjgsMjggLTI4LDY4IHYgNjQgcSAwLDQwIC0yOCw2OCAtMjgsMjggLTY4LDI4IEggMjI0IHEgLTQwLDAgLTY4LC0yOCAtMjgsLTI4IC0yOCwtNjggViAzMzEgbCAyNTYsMzE1IHEgNDQsNTMgMTE2LDg3LjUgNzIsMzQuNSAxNDAsMzQuNSB6IE0gMTkwOSw2MDUgcSAwLC02MiAtNDYsLTEyMCBMIDE1NjgsMTIyIFEgMTUyNSw2OSAxNDUyLDM0LjUgMTM3OSwwIDEzMTIsMCBIIDIyNCBRIDEzMiwwIDY2LDY2IDAsMTMyIDAsMjI0IHYgOTYwIHEgMCw5MiA2NiwxNTggNjYsNjYgMTU4LDY2IGggMzIwIHEgOTIsMCAxNTgsLTY2IDY2LC02NiA2NiwtMTU4IHYgLTMyIGggNTQ0IHEgOTIsMCAxNTgsLTY2IDY2LC02NiA2NiwtMTU4IFYgNzY4IGggMTkyIHEgNTQsMCA5OSwtMjQuNSA0NSwtMjQuNSA2NywtNzAuNSAxNSwtMzIgMTUsLTY4IHoiCiAgICAgICBpZD0icGF0aDMwMDUiCiAgICAgICBpbmtzY2FwZTpjb25uZWN0b3ItY3VydmF0dXJlPSIwIgogICAgICAgc3R5bGU9ImZpbGw6Y3VycmVudENvbG9yIiAvPgogIDwvZz4KPC9zdmc+Cg==" width="144px">
+      </div>
+      <div class="column">
+        <div>
+          <br>
+          <b>Wifi-uSDcard</b><br>A micro SD card module you can control via WiFi with a web interface based on <a href="https://ayushsharma82.github.io/ESP-DASH">ESP Dash</a>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8 has-text-centered">
+        <hr>
+        Relevant Links:
+        <hr/>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-4 has-text-centered">
+        </div>
+    </div>
+  </div>
+</template>

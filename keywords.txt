@@ -16,4 +16,4 @@ updateLineChart		KEYWORD2
 addGaugeChart		KEYWORD2
 updateGaugeChart	KEYWORD2
 attachButtonClick	KEYWORD2
-
+addFolderCard	KEYWORD2

@@ -309,6 +309,86 @@ void ESPDashClass::updateTemperatureCard(const char* _id, int _value){
     return;
 }
 
+void ESPDashClass::addFolderCard(const char* _id, const char* _name, int _type){
+    if(_id != NULL && _type >= 0 && _type <= FOLDER_CARD_TYPES){
+        for(int i=0; i < FOLDER_CARD_LIMIT; i++){
+            if(folder_card_id[i] == ""){
+                if(DEBUG_MODE){
+                    Serial.println("[DASH] Found an empty slot in Folder Cards. Inserted New Card at Index ["+String(i)+"].");
+                }
+
+                folder_card_id[i] = _id;
+                folder_card_name[i] = _name;
+                folder_card_type[i] = _type;
+                folder_card_value[i] = "{}";
+
+                ws.textAll("{\"response\": \"updateLayout\"}");
+                break;
+            }
+        }
+        return;
+    }else{
+        return;
+    }
+}
+
+
+// Add Folder Card with Custom Value
+void ESPDashClass::addFolderCard(const char* _id, const char* _name, int _type, const char* _value){
+    if(_id != NULL && _type >= 0 && _type <= FOLDER_CARD_TYPES){
+        for(int i=0; i < FOLDER_CARD_LIMIT; i++){
+            if(folder_card_id[i] == ""){
+                if(DEBUG_MODE){
+                    Serial.println("[DASH] Found an empty slot in Folder Cards. Inserted New Card at Index ["+String(i)+"].");
+                }
+
+                folder_card_id[i] = _id;
+                folder_card_name[i] = _name;
+                folder_card_type[i] = _type;
+                folder_card_value[i] = _value;
+
+                ws.textAll("{\"response\": \"updateLayout\"}");
+                break;
+            }
+        }
+        return;
+    }else{
+        return;
+    }
+}
+
+
+// Update Folder Card with custom value
+void ESPDashClass::updateFolderCard(const char* _id, const char* _value){
+    for(int i=0; i < FOLDER_CARD_LIMIT; i++){
+        if(folder_card_id[i] == _id){
+            if(DEBUG_MODE){
+                Serial.println("[DASH] Updated Folder Card at Index ["+String(i)+"].");
+            }
+
+            folder_card_value[i] = _value;
+
+            DynamicJsonDocument doc(250);
+            JsonObject object = doc.to<JsonObject>();
+            object["response"] = "updateFolderCard";
+            object["id"] = folder_card_id[i];
+            object["value"] = folder_card_value[i];
+            size_t len = measureJson(doc);
+            AsyncWebSocketMessageBuffer * buffer = ws.makeBuffer(len);
+            if (buffer) {
+                serializeJson(doc, (char *)buffer->get(), len + 1);
+                ws.textAll(buffer);
+            }else{
+                if(DEBUG_MODE){
+                    Serial.println("[DASH] Websocket Buffer Error");
+                }
+            }
+            break;
+        }
+    }
+    return;
+}
+
 
 
 ///////////////////
@@ -946,6 +1026,19 @@ void ESPDashClass::generateLayoutResponse(String& result){
             jsoncard["name"] = temperature_card_name[i];
             jsoncard["value_type"] = temperature_card_type[i];
             jsoncard["value"] = temperature_card_value[i];
+            cards.add(jsoncard);
+        }
+    }
+
+    for(int i=0; i < FOLDER_CARD_LIMIT; i++){
+        if(folder_card_id[i] != ""){
+            DynamicJsonDocument carddoc(250);
+            JsonObject jsoncard = carddoc.to<JsonObject>();
+            jsoncard["id"] = folder_card_id[i];
+            jsoncard["card_type"] = "folder";
+            jsoncard["name"] = folder_card_name[i];
+            jsoncard["value_type"] = folder_card_type[i];
+            jsoncard["value"] = folder_card_value[i];
             cards.add(jsoncard);
         }
     }

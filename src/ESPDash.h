@@ -53,10 +53,12 @@ typedef std::function<void(const char* sliderId, int sliderValue)> DashSliderHan
 #endif
 
 #define TEMPERATURE_CARD_TYPES 6
+#define FOLDER_CARD_TYPES 2
 #define STATUS_CARD_TYPES 4
 #define SLIDER_CARD_TYPES 4
 
 #if defined(ESP8266)
+    #define FOLDER_CARD_LIMIT 2
     #define BUTTON_CARD_LIMIT 20
     #define NUMBER_CARD_LIMIT 20
     #define TEMPERATURE_CARD_LIMIT 20
@@ -66,6 +68,7 @@ typedef std::function<void(const char* sliderId, int sliderValue)> DashSliderHan
     #define GAUGE_CHART_LIMIT 20
     #define SLIDER_CARD_LIMIT 10
 #elif defined(ESP32)
+    #define FOLDER_CARD_LIMIT 2
     #define BUTTON_CARD_LIMIT 50
     #define NUMBER_CARD_LIMIT 50
     #define TEMPERATURE_CARD_LIMIT 50
@@ -91,6 +94,10 @@ class ESPDashClass{
         void addTemperatureCard(const char* _id, const char* _name, int _type); // Add Temperature Card with custom type and default value
         void addTemperatureCard(const char* _id, const char* _name, int _type, int _value); // Add Temperature Card with custom value
         void updateTemperatureCard(const char* _id, int _value); // Update Temperature Card with custom value
+
+        void addFolderCard(const char* _id, const char* _name, int _type); // Add Folder Card with custom type and default value
+        void addFolderCard(const char* _id, const char* _name, int _type, const char* _value); // Add Folder Card with custom value
+        void updateFolderCard(const char* _id, const char* _value); // Update Folder Card with custom value
 
         void addHumidityCard(const char* _id, const char* _name);   // Add default Humidity card
         void addHumidityCard(const char* _id, const char* _name, int _value);  // Add Humidity Card with custom value
@@ -161,6 +168,18 @@ class ESPDashClass{
         int temperature_card_type[TEMPERATURE_CARD_LIMIT] = {};
         int temperature_card_value[TEMPERATURE_CARD_LIMIT] = {};
 
+ // Folder Cards
+        // Data Relation:
+        // Card ID -> Card Name ->>
+        // Types 
+        // 0 - Tree View
+        // 1 - List View
+        // ->> Json Value
+        String folder_card_id[FOLDER_CARD_LIMIT] = {};
+        String folder_card_name[FOLDER_CARD_LIMIT] = {};
+        int folder_card_type[FOLDER_CARD_LIMIT] = {};
+        String folder_card_value[FOLDER_CARD_LIMIT] = {};
+
         // Humidity Cards
         // Data Relation:
         // Card ID -> Card Name -> Integer Value
@@ -222,6 +241,7 @@ class ESPDashClass{
         size_t getTotalResponseCapacity();
         size_t getNumberCardsLen();
         size_t getTemperatureCardsLen();
+        size_t getFolderCardsLen();
         size_t getHumidityCardsLen();
         size_t getStatusCardsLen();
         size_t getButtonCardsLen();
